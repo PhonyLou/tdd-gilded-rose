@@ -62,6 +62,16 @@ public class RoseTest {
     }
 
     @Test
+    void should_sellIn_10_quality_50_when_one_day_passed_given_Sulfuras_sellIn_10_quality_50() {
+        Sulfuras sulfuras = new Sulfuras(10,50);
+        Rose rose = new Rose();
+        Sulfuras updatedAgedBrie = (Sulfuras) rose.oneDayPassed(sulfuras);
+
+        assertThat(updatedAgedBrie.getQuality()).isEqualTo(50);
+        assertThat(updatedAgedBrie.getSellIn()).isEqualTo(10);
+    }
+
+    @Test
     void should_return_original_quality_when_updating_given_Sulfuras() {
         Sulfuras sulfuras = new Sulfuras(-1,10);
         Rose rose = new Rose();
