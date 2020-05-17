@@ -12,10 +12,13 @@ public class RoseTest {
 
 
     @Test
-    void should_increase_1_unit_quality_when_updating_given_AgedBrie_is_sellIn_positive() {
-        AgedBrie agedBrie = new AgedBrie(11,1);
+    void should_sellIn_9_quality_2_when_one_day_passed_given_AgedBrie_sellIn_10_quality_1() {
+        AgedBrie agedBrie = new AgedBrie(10,1);
         Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(agedBrie).getQuality()).isEqualTo(2);
+        AgedBrie updatedAgedBrie = (AgedBrie) rose.oneDayPassed(agedBrie);
+
+        assertThat(updatedAgedBrie.getQuality()).isEqualTo(2);
+        assertThat(updatedAgedBrie.getSellIn()).isEqualTo(9);
     }
 
     @Test
