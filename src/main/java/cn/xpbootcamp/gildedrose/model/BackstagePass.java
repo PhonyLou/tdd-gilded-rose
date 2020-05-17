@@ -13,7 +13,7 @@ public class BackstagePass extends Goods {
 
         if (currentSellIn > 10) nextQuality = currentQuality + 1;
         if (currentSellIn <= 10 && currentSellIn > 5) nextQuality = currentQuality + 2;
-        if (currentSellIn <= 5 && currentSellIn >= 0) nextQuality = currentQuality + 3;
+        if (currentSellIn <= 5 && currentSellIn > 0) nextQuality = currentQuality + 3;
 
         return new BackstagePass(currentSellIn - 1, nextQuality);
     }
