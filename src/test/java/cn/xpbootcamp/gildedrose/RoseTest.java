@@ -52,24 +52,13 @@ public class RoseTest {
     }
 
     @Test
-    void should_increase_2_unit_quality_when_updating_given_AgedBrie_is_sellIn_negative() {
-        AgedBrie agedBrie = new AgedBrie(-1,1);
+    void should_sellIn_9_quality_50_when_one_day_passed_given_AgedBrie_sellIn_10_quality_50() {
+        AgedBrie agedBrie = new AgedBrie(10,50);
         Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(agedBrie).getQuality()).isEqualTo(3);
-    }
+        AgedBrie updatedAgedBrie = (AgedBrie) rose.oneDayPassed(agedBrie);
 
-    @Test
-    void should_return_50_when_updating_given_AgedBrie_quality_is_more_than_50() {
-        AgedBrie agedBrie = new AgedBrie(-1,50);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(agedBrie).getQuality()).isEqualTo(50);
-    }
-
-    @Test
-    void should_return_0_when_updating_given_AgedBrie_quality_is_less_than_0() {
-        AgedBrie agedBrie = new AgedBrie(-1,-10);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(agedBrie).getQuality()).isEqualTo(0);
+        assertThat(updatedAgedBrie.getQuality()).isEqualTo(50);
+        assertThat(updatedAgedBrie.getSellIn()).isEqualTo(9);
     }
 
     @Test
