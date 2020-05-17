@@ -42,6 +42,16 @@ public class RoseTest {
     }
 
     @Test
+    void should_sellIn_minus_2_quality_3_when_one_day_passed_given_AgedBrie_sellIn_minus_1_quality_1() {
+        AgedBrie agedBrie = new AgedBrie(-1,1);
+        Rose rose = new Rose();
+        AgedBrie updatedAgedBrie = (AgedBrie) rose.oneDayPassed(agedBrie);
+
+        assertThat(updatedAgedBrie.getQuality()).isEqualTo(3);
+        assertThat(updatedAgedBrie.getSellIn()).isEqualTo(-2);
+    }
+
+    @Test
     void should_increase_2_unit_quality_when_updating_given_AgedBrie_is_sellIn_negative() {
         AgedBrie agedBrie = new AgedBrie(-1,1);
         Rose rose = new Rose();
