@@ -72,24 +72,23 @@ public class RoseTest {
     }
 
     @Test
-    void should_return_original_quality_when_updating_given_Sulfuras() {
-        Sulfuras sulfuras = new Sulfuras(-1,10);
+    void should_sellIn_0_quality_1_when_one_day_passed_given_Sulfuras_sellIn_0_quality_1() {
+        Sulfuras sulfuras = new Sulfuras(0,1);
         Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(sulfuras).getQuality()).isEqualTo(10);
+        Sulfuras updatedAgedBrie = (Sulfuras) rose.oneDayPassed(sulfuras);
+
+        assertThat(updatedAgedBrie.getQuality()).isEqualTo(1);
+        assertThat(updatedAgedBrie.getSellIn()).isEqualTo(0);
     }
 
     @Test
-    void should_return_0_quality_when_updating_given_Sulfuras_quality_is_less_than_0() {
-        Sulfuras sulfuras = new Sulfuras(-1,-10);
+    void should_sellIn_minus_1_quality_1_when_one_day_passed_given_Sulfuras_sellIn_minus_1_quality_1() {
+        Sulfuras sulfuras = new Sulfuras(-1,1);
         Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(sulfuras).getQuality()).isEqualTo(0);
-    }
+        Sulfuras updatedAgedBrie = (Sulfuras) rose.oneDayPassed(sulfuras);
 
-    @Test
-    void should_return_50_quality_when_updating_given_Sulfuras_quality_is_more_than_50() {
-        Sulfuras sulfuras = new Sulfuras(-1,100);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(sulfuras).getQuality()).isEqualTo(50);
+        assertThat(updatedAgedBrie.getQuality()).isEqualTo(1);
+        assertThat(updatedAgedBrie.getSellIn()).isEqualTo(-1);
     }
 
     @Test
