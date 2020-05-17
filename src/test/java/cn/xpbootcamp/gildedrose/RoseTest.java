@@ -152,38 +152,33 @@ public class RoseTest {
     }
 
     @Test
-    void should_decrease_1_unit_quality_when_updating_given_CommonGoods_is_sellIn_larger_than_0() {
-        CommonGoods commonGoods = new CommonGoods(5,10);
+    void should_sellIn_19_quality_9_when_one_day_passed_given_CommonGoods_sellIn_20_quality_10() {
+        CommonGoods commonGoods = new CommonGoods(20,10);
         Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(commonGoods).getQuality()).isEqualTo(9);
+        CommonGoods updatedCommonGoods = (CommonGoods) rose.oneDayPassed(commonGoods);
+
+        assertThat(updatedCommonGoods.getQuality()).isEqualTo(9);
+        assertThat(updatedCommonGoods.getSellIn()).isEqualTo(19);
     }
 
     @Test
-    void should_decrease_3_unit_quality_when_updating_given_CommonGoods_is_sellIn_equals_0() {
+    void should_sellIn_minus_1_quality_8_when_one_day_passed_given_CommonGoods_sellIn_0_quality_10() {
         CommonGoods commonGoods = new CommonGoods(0,10);
         Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(commonGoods).getQuality()).isEqualTo(8);
+        CommonGoods updatedCommonGoods = (CommonGoods) rose.oneDayPassed(commonGoods);
+
+        assertThat(updatedCommonGoods.getQuality()).isEqualTo(8);
+        assertThat(updatedCommonGoods.getSellIn()).isEqualTo(-1);
     }
 
     @Test
-    void should_decrease_2_unit_quality_when_updating_given_CommonGoods_is_sellIn_negative() {
-        CommonGoods commonGoods = new CommonGoods(-1,8);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(commonGoods).getQuality()).isEqualTo(6);
-    }
-
-    @Test
-    void should_reset_to_0_unit_quality_when_updating_given_CommonGoods_is_quality_less_than_0() {
+    void should_sellIn_minus_2_quality_0_when_one_day_passed_given_CommonGoods_sellIn_minus_1_quality_1() {
         CommonGoods commonGoods = new CommonGoods(-1,1);
         Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(commonGoods).getQuality()).isEqualTo(0);
-    }
+        CommonGoods updatedCommonGoods = (CommonGoods) rose.oneDayPassed(commonGoods);
 
-    @Test
-    void should_reset_to_50_unit_quality_when_updating_given_CommonGoods_is_quality_more_than_50() {
-        CommonGoods commonGoods = new CommonGoods(10,100);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(commonGoods).getQuality()).isEqualTo(50);
+        assertThat(updatedCommonGoods.getQuality()).isEqualTo(0);
+        assertThat(updatedCommonGoods.getSellIn()).isEqualTo(-2);
     }
 }
 
