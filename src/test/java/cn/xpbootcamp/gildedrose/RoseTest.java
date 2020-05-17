@@ -142,59 +142,13 @@ public class RoseTest {
     }
 
     @Test
-    void should_increase_1_unit_quality_when_updating_given_BackstagePass_is_sellIn_more_than_10() {
-        BackstagePass backstagePass = new BackstagePass(11,1);
+    void should_sellIn_1_quality_50_when_one_day_passed_given_BackstagePass_sellIn_2_quality_49() {
+        BackstagePass backstagePass = new BackstagePass(2,49);
         Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(backstagePass).getQuality()).isEqualTo(2);
-    }
+        BackstagePass updatedAgedBrie = (BackstagePass) rose.oneDayPassed(backstagePass);
 
-    @Test
-    void should_increase_2_unit_quality_when_updating_given_BackstagePass_is_sellIn_equals_10() {
-        BackstagePass backstagePass = new BackstagePass(10,1);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(backstagePass).getQuality()).isEqualTo(3);
-    }
-
-    @Test
-    void should_increase_2_unit_quality_when_updating_given_BackstagePass_is_sellIn_less_than_10_and_more_than_5() {
-        BackstagePass backstagePass = new BackstagePass(6,11);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(backstagePass).getQuality()).isEqualTo(13);
-    }
-
-    @Test
-    void should_increase_3_unit_quality_when_updating_given_BackstagePass_is_sellIn_equals_5() {
-        BackstagePass backstagePass = new BackstagePass(5,13);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(backstagePass).getQuality()).isEqualTo(16);
-    }
-
-    @Test
-    void should_increase_3_unit_quality_when_updating_given_BackstagePass_is_sellIn_less_than_5_and_more_than_0() {
-        BackstagePass backstagePass = new BackstagePass(4,16);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(backstagePass).getQuality()).isEqualTo(19);
-    }
-
-    @Test
-    void should_reset_to_0_unit_quality_when_updating_given_BackstagePass_is_sellIn_less_than_0() {
-        BackstagePass backstagePass = new BackstagePass(-1,28);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(backstagePass).getQuality()).isEqualTo(0);
-    }
-
-    @Test
-    void should_reset_to_0_unit_quality_when_updating_given_BackstagePass_is_quality_less_than_0() {
-        BackstagePass backstagePass = new BackstagePass(11,-1);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(backstagePass).getQuality()).isEqualTo(0);
-    }
-
-    @Test
-    void should_reset_to_50_unit_quality_when_updating_given_BackstagePass_is_quality_more_than_50() {
-        BackstagePass backstagePass = new BackstagePass(1,49);
-        Rose rose = new Rose();
-        assertThat(rose.oneDayPassed(backstagePass).getQuality()).isEqualTo(50);
+        assertThat(updatedAgedBrie.getQuality()).isEqualTo(50);
+        assertThat(updatedAgedBrie.getSellIn()).isEqualTo(1);
     }
 
     @Test
