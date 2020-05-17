@@ -12,8 +12,8 @@ public class AgedBrie extends Goods{
         int currentQuality = this.getQuality();
         int nextQuality = 0;
 
-        if (currentSellIn >= 0) nextQuality = currentQuality + 1;
-        if (currentSellIn < 0) nextQuality = currentQuality + 2;
+        if (currentSellIn > 0) nextQuality = currentQuality + 1;
+        if (currentSellIn <= 0) nextQuality = currentQuality + 2;
 
         return new AgedBrie(currentSellIn - 1, nextQuality);
     }
