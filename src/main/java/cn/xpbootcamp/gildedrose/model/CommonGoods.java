@@ -6,7 +6,7 @@ public class CommonGoods extends Goods{
     }
 
     @Override
-    public Goods refreshQuality() {
+    public Goods updateSellInAndQuality() {
         int currentSellIn = this.getSellIn();
         int currentQuality = this.getQuality();
         int nextQuality = 0;

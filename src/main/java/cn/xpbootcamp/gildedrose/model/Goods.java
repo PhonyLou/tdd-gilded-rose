@@ -1,12 +1,11 @@
 package cn.xpbootcamp.gildedrose.model;
 
-public class Goods {
+public abstract class Goods {
     private int sellIn;
     private int quality;
 
-    public Goods refreshQuality() {
-        return this;
-    }
+    public abstract Goods updateSellInAndQuality();
+
     public Goods doQualityLimitation() {
         int MAX_QUALITY = 50;
         int MIN_QUALITY = 0;
